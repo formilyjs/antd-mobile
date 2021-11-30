@@ -23,7 +23,8 @@
   ],
   "scripts": {
     "start": "dumi dev",
-    "build": "formily-tpl build"
+    "build": "formily-tpl build",
+    "build:docs": "dumi build"
   },
   "repository": {
     "type": "git",
