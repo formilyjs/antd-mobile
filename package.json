@@ -10,6 +10,7 @@
   "scripts": {
     "start": "dumi dev",
     "start:component": "yarn workspace @formily/antd-mobile start",
+    "build:component:docs": "yarn workspace @formily/antd-mobile build && yarn workspace @formily/antd-mobile build:docs",
     "build": "formily-tpl build",
     "build:docs": "dumi build",
     "test": "jest --coverage",
