@@ -1,0 +1,23 @@
+@import '../global/global';
+
+@list-prefix-cls: ~'@{ant-prefix}-formily-list';
+
+.@{list-prefix-cls} {
+  --font-size: 13px;
+  --header-font-color: #969696;
+  --footer-font-color: #969696;
+
+  &-header {
+    padding: 12px 8px 6px;
+    color: var(--header-font-color);
+    font-size: var(--font-size);
+    background: var(--active-background-color);
+  }
+
+  &-footer {
+    padding: 12px 8px 6px;
+    color: var(--footer-font-color);
+    font-size: var(--font-size);
+    background: var(--active-background-color);
+  }
+}
