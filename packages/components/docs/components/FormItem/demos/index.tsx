@@ -2,22 +2,21 @@ import React from 'react'
 import JsonSchema from './json-schema'
 import MarkupSchema from './markup-schema'
 import JSX from './jsx'
-// @ts-ignore
-import { DemoBlock } from 'demos'
+import { List } from '@formily/antd-mobile'
 
 function Index(props) {
   return (
     <>
-      <DemoBlock title="Markup Schema 模式" style={{padding: 0}}>
-        <MarkupSchema/>
-      </DemoBlock>
+      <List renderHeader="Markup Schema 模式">
+        <MarkupSchema />
+      </List>
 
-      <DemoBlock title="JSON Schema 模式" style={{padding: 0}}>
-        <JsonSchema/>
-      </DemoBlock>
-      <DemoBlock title="原生JSX 模式" style={{padding: 0}}>
-        <JSX/>
-      </DemoBlock>
+      <List renderHeader="JSON Schema 模式">
+        <JsonSchema />
+      </List>
+      <List renderHeader="原生JSX 模式">
+        <JSX />
+      </List>
     </>
   )
 }

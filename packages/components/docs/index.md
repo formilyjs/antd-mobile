@@ -27,7 +27,7 @@ footer: Open-source MIT Licensed | Copyright © 2019-present<br />Powered by sel
 ## Installation
 
 ```bash
-$ npm install --save antd-mobile moment
+$ npm install --save antd-mobile
 $ npm install --save @formily/core @formily/react @formily/antd-mobile
 
 ```
@@ -53,12 +53,15 @@ export default () => (
         name="price"
         title="价格"
         initialValue={5.2}
-        decorator={[FormItem, {
-          bordered: false,
-          style:{
-            '--prefix-width':'auto'
-          }
-        }]}
+        decorator={[
+          FormItem,
+          {
+            bordered: false,
+            style: {
+              '--prefix-width': 'auto',
+            },
+          },
+        ]}
         component={[
           NumberPicker,
           {
@@ -74,12 +77,15 @@ export default () => (
         name="count"
         title="数量"
         initialValue={100}
-        decorator={[FormItem, {
-          bordered: false,
-          style:{
-            '--prefix-width':'auto'
-          }
-        }]}
+        decorator={[
+          FormItem,
+          {
+            bordered: false,
+            style: {
+              '--prefix-width': 'auto',
+            },
+          },
+        ]}
         component={[
           NumberPicker,
           {
@@ -92,7 +98,9 @@ export default () => (
       />
       <FormConsumer>
         {(form) => (
-          <FormItem bordered={false}>={` ${form.values.price * form.values.count} 元`}</FormItem>
+          <FormItem bordered={false}>
+            ={` ${form.values.price * form.values.count} 元`}
+          </FormItem>
         )}
       </FormConsumer>
     </Space>

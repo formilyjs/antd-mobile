@@ -2,9 +2,6 @@ import { resolve } from 'path'
 
 export default {
   mode: 'site',
-  alias: {
-    demos: process.cwd() + '/demo',
-  },
   logo: '//img.alicdn.com/imgextra/i2/O1CN01Kq3OHU1fph6LGqjIz_!!6000000004056-55-tps-1141-150.svg',
   title: 'Formily',
   hash: true,
@@ -26,7 +23,7 @@ export default {
   navs: {
     'zh-CN': [
       {
-        title: 'Ant Design Mobile',
+        title: '组件',
         path: '/zh-CN/components',
       },
       {
@@ -40,7 +37,7 @@ export default {
     ],
     'en-US': [
       {
-        title: 'Ant Design Mobile',
+        title: 'Components',
         path: '/components',
       },
       {
@@ -61,6 +58,9 @@ export default {
   ],
   styles: [
     `
+    .__dumi-default-layout{
+      padding-right: 58px!important;
+    }
     .__dumi-default-navbar-logo{
       height: 60px !important;
       width: 150px !important;
