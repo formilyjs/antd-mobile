@@ -1,5 +1,5 @@
-@import (reference) "~antd-mobile/es/global/global.css";
-@import "../global/global";
+@import (reference) '~antd-mobile/es/global/global.css';
+@import '../global/global';
 
 @form-item-cls: ~'@{ant-prefix}-formily-item';
 @form-item-margin-bottom: 0px;
@@ -11,15 +11,12 @@
   font-size: @font-size;
   --prefix-width: 6em;
 
-  .@{ant-prefix}-list-item-content {
-    align-items: flex-start;
-  }
-
   &-label {
     line-height: @height-base;
     min-height: @height-base - 2;
   }
 
+  /*
   textarea.@{ant-prefix}-input {
     height: auto;
   }
@@ -85,12 +82,14 @@
   .@{ant-prefix}-input-group .@{ant-prefix}-select,
   .@{ant-prefix}-input-group .@{ant-prefix}-cascader-picker {
     width: auto;
-  }
+    }*/
 }
 
 .@{form-item-cls}-label {
   position: relative;
   display: flex;
+  align-items: center;
+  color: var(--adm-color-text);
 
   &-content {
     overflow: hidden;
@@ -109,10 +108,6 @@
       border-bottom: 1px dashed currentColor;
     }
   }
-}
-
-.@{form-item-cls}-label {
-  color: var(--adm-color-text);
 }
 
 .@{form-item-cls}-label-align-left {
@@ -236,6 +231,8 @@
     height: @height-sm - 2;
   }
 
+  /*
+
   .@{ant-prefix}-input-affix-wrapper,
   .@{ant-prefix}-input-number,
   .@{ant-prefix}-picker {
@@ -323,6 +320,7 @@
       height: @height-sm - 8;
     }
   }
+  */
 
   &.@{form-item-cls}-feedback-layout-terse {
     margin-bottom: 8px;
@@ -366,6 +364,8 @@
   .@{form-item-cls}-control-content {
     min-height: @height-lg - 2;
   }
+
+  /*
 
   .@{ant-prefix}-input {
     font-size: @font-size-lg;
@@ -474,6 +474,7 @@
       height: @height-lg - 8;
     }
   }
+  */
 
   &.@{form-item-cls}-feedback-layout-terse {
     margin-bottom: 8px;
@@ -495,6 +496,10 @@
 .@{form-item-cls} {
   &-layout-vertical {
     display: block;
+
+    .@{ant-prefix}-list-item-content {
+      align-items: flex-start;
+    }
 
     .@{form-item-cls}-label {
       min-height: @height-base - 10;
@@ -579,7 +584,7 @@
   transition: all 0.3s;
   touch-action: manipulation;
   outline: none;
-
+  /*
   .@{ant-prefix}-input-number,
   .@{ant-prefix}-picker,
   .@{ant-prefix}-cascader-picker:focus .@{ant-prefix}-cascader-input,
@@ -589,7 +594,7 @@
   .@{ant-prefix}-input {
     border: none !important;
     box-shadow: none !important;
-  }
+    }*/
 }
 
 .@{form-item-cls}-no-form-layout {
@@ -599,6 +604,7 @@
 }
 
 .@{form-item-cls}-bordered-none {
+  /*
   .@{ant-prefix}-list-item-content,
   .@{ant-prefix}-input-number,
   .@{ant-prefix}-input-affix-wrapper,
@@ -617,7 +623,7 @@
     .@{ant-prefix}-input-number-handler {
       border: none !important;
     }
-  }
+  }*/
 }
 
 .@{form-item-cls}-inset {
@@ -625,6 +631,8 @@
   border: 1px solid @border-color-base;
   padding-left: 12px;
   transition: 0.3s all;
+
+  /*
 
   .@{ant-prefix}-input-number,
   .@{ant-prefix}-picker,
@@ -644,6 +652,7 @@
       border: none !important;
     }
   }
+  */
 
   &:hover {
     //.hover();
@@ -659,14 +668,14 @@
     //.active();
   }
 
-  .@{ant-prefix}-input-number,
+  /*.@{ant-prefix}-input-number,
   .@{ant-prefix}-picker,
   .@{ant-prefix}-cascader-picker:focus .@{ant-prefix}-cascader-input,
   .@{ant-prefix}-select:not(.@{ant-prefix}-select-customize-input)
   .@{ant-prefix}-select-selector,
   .@{ant-prefix}-input {
     //.active();
-  }
+  }*/
 }
 
 .@{form-item-cls} {
@@ -678,6 +687,11 @@
 }
 
 .@{form-item-cls}-error {
+  .@{ant-prefix}-list-item-content {
+    align-items: flex-start;
+  }
+
+  /*
   .@{ant-prefix}-select-selector,
   .@{ant-prefix}-cascader-picker,
   .@{ant-prefix}-picker,
@@ -727,7 +741,7 @@
       border-color: @error-color;
     }
   }
-
+*/
 }
 
 .@{form-item-cls}-error-help {
@@ -746,6 +760,7 @@
 }
 
 .@{form-item-cls}-warning {
+  /*
   .@{ant-prefix}-select-selector,
   .@{ant-prefix}-cascader-picker,
   .@{ant-prefix}-picker,
@@ -807,9 +822,11 @@
   .@{ant-prefix}-input:focus {
     //.active(@warning-color);
   }
+  */
 }
 
 .@{form-item-cls}-success {
+  /*
   .@{ant-prefix}-select-selector,
   .@{ant-prefix}-cascader-picker,
   .@{ant-prefix}-picker,
@@ -839,5 +856,5 @@
     border-color: @success-color !important;
     border-right-width: 1px !important;
     outline: 0;
-  }
+  }*/
 }
