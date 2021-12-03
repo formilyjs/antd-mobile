@@ -1,0 +1,92 @@
+@import (reference) '~dumi-theme-mobile/es/style/variables';
+
+@s-device-width: 395px;
+
+.gen-device-style(@scale) {
+  /*width: @s-device-width * @scale;
+  min-width: @s-device-width * @scale;
+  height: @s-device-width * @scale * @s-device-ratio;
+  box-shadow: 0 0 0 @s-device-border-width * @scale #090a0d,
+  0 0 0 @s-device-shell-width * @scale #9fa3a8,
+  0 4px 20px @s-device-shell-width * @scale rgba(0, 0, 0, 0.1);*/
+
+  width: @s-device-width * @scale !important;
+  //height: 790px;
+  background-image: url(https://gw.alipayobjects.com/zos/rmsportal/JAxcjwaQvIsAWvXUrjbY.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  overflow: hidden;
+
+  .mobile-header {
+    height: 64px;
+    overflow: hidden;
+  }
+
+  .mobile-content {
+    height: calc(100vh - 140px);
+    overflow: auto;
+    margin: 5px 10px;
+    //background-color: #fff;
+    cursor: url('https://gw.alipayobjects.com/mdn/rms_4f0ff1/afts/img/A*eRn5S6F8qVgAAAAAAAAAAABkARQnAQ')
+        10 10,
+      auto;
+    width: 375px;
+    touch-action: pan-y;
+    user-select: none;
+    -webkit-user-drag: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+
+  .mobile-footer {
+    background: #ffffff;
+    border-top: 1px solid #efefef;
+    margin: 0 10px;
+    height: 20px;
+    border-radius: 0 0 10px 10px;
+  }
+}
+
+.@{prefix}-mobile-demo-layout {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin-top: 20px;
+
+  &.iframe {
+    display: block;
+    margin-top: 0;
+    cursor: url('https://gw.alipayobjects.com/mdn/rms_4f0ff1/afts/img/A*eRn5S6F8qVgAAAAAAAAAAABkARQnAQ')
+        10 10,
+      auto;
+  }
+
+  .mobile-container {
+    .gen-device-style(1);
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      border-left: 1px solid #dfdfdf87;
+      border-right: 1px solid #dfdfdf87;
+      left: 10px;
+      right: 10px;
+      top: 72px;
+      bottom: 20px;
+      z-index: -1;
+    }
+  }
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+
+  background-color: rgba(239, 239, 239, 0.73);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #c0c0c0;
+  border-radius: 0px;
+  transition: all 0.25s ease-in-out 0s;
+}

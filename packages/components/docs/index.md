@@ -1,6 +1,5 @@
 ---
 mobile: false
-simulator: false
 title: Formily-Alibaba unified front-end form solution
 order: 10
 hero:
@@ -37,7 +36,7 @@ $ npm install --save @formily/core @formily/react @formily/antd-mobile
 ```tsx
 /**
  * defaultShowCode: true
- * iframe: false
+ * simulator: false
  */
 import React from 'react'
 import { NumberPicker, FormItem, Space } from '@formily/antd-mobile'

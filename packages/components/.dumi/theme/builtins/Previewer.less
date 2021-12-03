@@ -1,0 +1,26 @@
+@import (reference) '~dumi-theme-mobile/es/style/variables';
+
+@media @v-device-show {
+  .@{prefix}-mobile-previewer {
+    &[data-inactive] {
+      cursor: pointer;
+    }
+
+    .@{prefix}-previewer-demo {
+      display: none;
+    }
+
+    .@{prefix}-previewer-desc,
+    .@{prefix}-previewer-desc:not([data-title]) + .@{prefix}-previewer-actions {
+      border-top: none;
+    }
+
+    button[role='source'] {
+      margin-right: -8px;
+      width: 0;
+      opacity: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+  }
+}

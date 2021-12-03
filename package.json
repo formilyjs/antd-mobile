@@ -44,7 +44,7 @@
     "@umijs/plugin-sass": "^1.1.1",
     "antd-mobile": "^5.0.0-rc.1",
     "antd-mobile-icons": "^0.2.2",
-    "dumi": "^1.1.0",
+    "dumi": "^1.1.34",
     "dumi-theme-mobile": "^1.1.16",
     "escape-string-regexp": "^4.0.0",
     "eslint": "^7.14.0",
