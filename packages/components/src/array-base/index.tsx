@@ -9,17 +9,13 @@ import {
 } from 'antd-mobile-icons'
 import { ButtonProps } from 'antd-mobile/es/components/button'
 import { ArrayField } from '@formily/core'
-import {
-  useField,
-  useFieldSchema,
-  Schema,
-  JSXComponent,
-  ISchema,
-} from '@formily/react'
+import { useField, useFieldSchema, Schema, JSXComponent } from '@formily/react'
 import { isValid, clone } from '@formily/shared'
 import { SortableHandle } from 'react-sortable-hoc'
 import { usePrefixCls } from '../__builtins__'
 import cls from 'classnames'
+
+export * from './utils'
 
 export type IconProps = HTMLProps<any> & React.SVGProps<SVGSVGElement>
 
@@ -281,32 +277,3 @@ ArrayBase.mixin = (target: any) => {
 }
 
 export default ArrayBase
-
-export const isAdditionComponent = (schema: ISchema) => {
-  return schema['x-component']?.indexOf('Addition') > -1
-}
-
-export const isIndexComponent = (schema: ISchema) => {
-  return schema['x-component']?.indexOf('Index') > -1
-}
-
-export const isRemoveComponent = (schema: ISchema) => {
-  return schema['x-component']?.indexOf('Remove') > -1
-}
-
-export const isMoveUpComponent = (schema: ISchema) => {
-  return schema['x-component']?.indexOf('MoveUp') > -1
-}
-
-export const isMoveDownComponent = (schema: ISchema) => {
-  return schema['x-component']?.indexOf('MoveDown') > -1
-}
-
-export const isOperationComponent = (schema: ISchema) => {
-  return (
-    isAdditionComponent(schema) ||
-    isRemoveComponent(schema) ||
-    isMoveDownComponent(schema) ||
-    isMoveUpComponent(schema)
-  )
-}

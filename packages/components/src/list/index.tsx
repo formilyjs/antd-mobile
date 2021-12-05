@@ -5,15 +5,18 @@ import {
   useField,
   useFieldSchema,
   SchemaExpressionScopeContext,
-  ISchema,
-  Schema,
 } from '@formily/react'
 import { ArrayField } from '@formily/core'
 import { List as AntdList } from 'antd-mobile'
 import { ListProps, ListItemProps } from 'antd-mobile/es/components/list'
 import { NativeProps } from 'antd-mobile/es/utils/native-props'
 import { usePrefixCls } from '../__builtins__'
-import { ArrayBase, ArrayBaseMixins } from '../array-base'
+import {
+  ArrayBase,
+  ArrayBaseMixins,
+  useArrayItemComponent,
+  isArrayItemComponent,
+} from '../array-base'
 import cls from 'classnames'
 
 export interface IListProps
@@ -52,14 +55,6 @@ type ComposedList = React.FC<IListProps> &
     ItemChildren?: React.FC<IListItemProps['children']>
   }
 
-const isItemNodeComponent = (
-  schema: ISchema,
-  componentName: string | string[]
-) => {
-  const names = Array.isArray(componentName) ? componentName : [componentName]
-  return names.some((name) => schema['x-component']?.indexOf(name) > -1)
-}
-
 export const List: ComposedList = observer(
   ({ className, style, title, mode, renderFooter, renderHeader, ...props }) => {
     const field = useField<ArrayField>()
@@ -92,7 +87,7 @@ export const List: ComposedList = observer(
                 schema={items}
                 name={index}
                 filterProperties={(sc) => {
-                  return !isItemNodeComponent(
+                  return !isArrayItemComponent(
                     sc,
                     Object.values(listComponentMap)
                   )
@@ -117,26 +112,9 @@ export const List: ComposedList = observer(
     )
   }
 )
-
-const useItemNodeComponent = (schema: Schema, name: string | string[]) => {
-  const names = Array.isArray(name) ? name : [name]
-  const result = new Map()
-  return schema?.reduceProperties((res, sc, key) => {
-    names.forEach((n) => {
-      if (isItemNodeComponent(sc, n) && !res.has(n)) {
-        res.set(
-          n,
-          <RecursionField name={key} schema={sc} onlyRenderProperties />
-        )
-      }
-    })
-    return res
-  }, result)
-}
-
 List.Item = observer((props) => {
   const schema = useFieldSchema()
-  const components = useItemNodeComponent(
+  const components = useArrayItemComponent(
     schema,
     Object.values(listComponentMap)
   )
@@ -153,7 +131,7 @@ List.Item = observer((props) => {
   )
 })
 
-const baseItemComponent = (props) => {
+const baseItemComponent = () => {
   return null
 }
 
