@@ -32,7 +32,7 @@ export default {
       },
       {
         title: 'GITHUB',
-        path: 'https://github.com/alibaba/formily',
+        path: 'https://github.com/formilyjs/antd-mobile',
       },
     ],
     'en-US': [
@@ -46,16 +46,11 @@ export default {
       },
       {
         title: 'GITHUB',
-        path: 'https://github.com/alibaba/formily',
+        path: 'https://github.com/formilyjs/antd-mobile',
       },
     ],
   },
-  links: [
-    {
-      rel: 'stylesheet',
-      href: 'https://unpkg.com/antd-mobile/dist/antd-mobile.css',
-    },
-  ],
+  links: [],
   styles: [
     `
     .__dumi-default-layout{
