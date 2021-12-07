@@ -21,12 +21,14 @@ const usePlaceholder = (value?: any) => {
   return isValid(value) && value !== '' ? value : placeholder
 }
 
-const Input: React.FC<InputProps & IPreviewTextProps> = ({className, ...props}) => {
+const Input: React.FC<InputProps & IPreviewTextProps> = ({
+  className,
+  ...props
+}) => {
   const prefixCls = usePrefixCls('form-text', props)
   return (
-    <div className={
-      cls(prefixCls, className)}>
-      <Input {...props} readOnly={true} value={usePlaceholder(props.value)}/>
+    <div className={cls(prefixCls, className)}>
+      {usePlaceholder(props.value)}
     </div>
   )
 }
@@ -41,41 +43,45 @@ const Text = (props: React.PropsWithChildren<any>) => {
   )
 }
 
-
-const Selector: React.FC<SelectorProps<any> & IPreviewTextProps> = observer((props) => {
-  const field = useField<Field>()
-  const prefixCls = usePrefixCls('form-text', props)
-  const dataSource: any[] = field?.dataSource?.length
-    ? field.dataSource
-    : props?.options?.length
+const Selector: React.FC<SelectorProps<any> & IPreviewTextProps> = observer(
+  (props) => {
+    const field = useField<Field>()
+    const prefixCls = usePrefixCls('form-text', props)
+    const dataSource: any[] = field?.dataSource?.length
+      ? field.dataSource
+      : props?.options?.length
       ? props.options
       : []
-  const placeholder = usePlaceholder()
-  const getSelected = () => {
-    return props.value || []
-  }
+    const placeholder = usePlaceholder()
+    const getSelected = () => {
+      return props.value || []
+    }
 
-  const getLabel = (target: any) => {
+    const getLabel = (target: any) => {
+      return (
+        dataSource?.find((item) => item.value == target)?.label || placeholder
+      )
+    }
+
+    const getLabels = () => {
+      const selected = getSelected()
+      if (!selected.length) return placeholder
+      if (selected.length === 1) return getLabel(selected[0])
+      return selected.map((item, key) => {
+        return (
+          <Tag key={key} fill="outline">
+            {getLabel(item)}
+          </Tag>
+        )
+      })
+    }
     return (
-      dataSource?.find((item) => item.value == target)?.label ||
-      placeholder
+      <div className={cls(prefixCls, props.className)} style={props.style}>
+        {getLabels()}
+      </div>
     )
   }
-
-  const getLabels = () => {
-    const selected = getSelected()
-    if (!selected.length) return placeholder
-    if (selected.length === 1) return getLabel(selected[0])
-    return selected.map((item, key) => {
-      return <Tag key={key} fill="outline">{getLabel(item)}</Tag>
-    })
-  }
-  return (
-    <div className={cls(prefixCls, props.className)} style={props.style}>
-      {getLabels()}
-    </div>
-  )
-})
+)
 
 Text.Input = Input
 Text.Selector = Selector
