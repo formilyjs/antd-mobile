@@ -33,9 +33,11 @@ type IFormButtonGroupProps = Omit<SpaceProps, 'align' | 'size'> & {
 
 type ComposedButtonGroup = React.FC<IFormButtonGroupProps> & {
   Sticky: React.FC<IStickyProps>
-  FormItem: React.FC<IFormItemProps & {
-    gutter?: number
-  }>
+  FormItem: React.FC<
+    IFormItemProps & {
+      gutter?: number
+    }
+  >
 }
 
 function getInheritedBackgroundColor(el: HTMLElement) {
@@ -65,34 +67,34 @@ function getDefaultBackground() {
 }
 
 export const FormButtonGroup: ComposedButtonGroup = ({
-                                                       align,
-                                                       gutter,
-                                                       ...props
-                                                     }) => {
+  align,
+  gutter,
+  ...props
+}) => {
   const prefixCls = usePrefixCls('formily-button-group')
   const gap = gutter?.valueOf() > 0 ? `${gutter}px` : 'var(--gap)'
-  return (
-    props.children?.['length'] ? <Space
+  return props.children?.['length'] ? (
+    <Space
       {...props}
       className={cls(prefixCls, props.className)}
       style={{
         ...props.style,
         ['--gap-horizontal']: gap,
-        justifyContent:
+        alignItems:
           align === 'left'
             ? 'flex-start'
             : align === 'right'
-              ? 'flex-end'
-              : 'center',
+            ? 'flex-end'
+            : 'center',
         display: 'flex',
       }}
     >
       {props.children}
-    </Space> : (
-      <div className={cls(prefixCls, props.className)}
-           style={props.style}
-      >{props.children}</div>
-    )
+    </Space>
+  ) : (
+    <div className={cls(prefixCls, props.className)} style={props.style}>
+      {props.children}
+    </div>
   )
 }
 
@@ -100,7 +102,7 @@ FormButtonGroup.defaultProps = {
   align: 'center',
 }
 
-FormButtonGroup.FormItem = ({gutter, ...props}) => {
+FormButtonGroup.FormItem = ({ gutter, ...props }) => {
   const gap = gutter?.valueOf() > 0 ? `${gutter}px` : 'var(--gap)'
   return (
     <BaseItem
@@ -114,7 +116,7 @@ FormButtonGroup.FormItem = ({gutter, ...props}) => {
       }}
     >
       {props.children?.['length'] ? (
-        <Space style={{['--gap-horizontal']: gap,}}>{props.children}</Space>
+        <Space style={{ ['--gap-horizontal']: gap }}>{props.children}</Space>
       ) : (
         props.children
       )}
@@ -122,7 +124,7 @@ FormButtonGroup.FormItem = ({gutter, ...props}) => {
   )
 }
 
-FormButtonGroup.Sticky = ({align, ...props}) => {
+FormButtonGroup.Sticky = ({ align, ...props }) => {
   const ref = useRef()
   const [color, setColor] = useState('transparent')
   const prefixCls = usePrefixCls('formily-button-group')
@@ -154,8 +156,8 @@ FormButtonGroup.Sticky = ({align, ...props}) => {
             align === 'left'
               ? 'flex-start'
               : align === 'right'
-                ? 'flex-end'
-                : 'center',
+              ? 'flex-end'
+              : 'center',
         }}
       >
         {props.children}
