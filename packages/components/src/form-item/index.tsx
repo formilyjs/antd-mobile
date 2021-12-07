@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import cls from 'classnames'
 import { usePrefixCls, pickDataProps } from '../__builtins__'
 import { isVoidField } from '@formily/core'
@@ -6,7 +6,11 @@ import { connect, mapProps } from '@formily/react'
 import { useFormLayout, FormLayoutShallowContext } from '../form-layout'
 import { Popover, List } from 'antd-mobile'
 import { ListItemProps } from 'antd-mobile/es/components/list'
-import { ExclamationCircleOutline, CloseCircleOutline, CheckCircleOutline } from 'antd-mobile-icons'
+import {
+  ExclamationCircleOutline,
+  CloseCircleOutline,
+  CheckCircleOutline,
+} from 'antd-mobile-icons'
 
 export interface IFormItemProps extends ListItemProps {
   className?: string
@@ -69,13 +73,15 @@ const useFormItemLayout = (props: IFormItemProps) => {
     feedbackLayout: props.feedbackLayout ?? layout.feedbackLayout ?? 'loose',
     tooltipLayout: props.tooltipLayout ?? layout.tooltipLayout ?? 'icon',
     tooltipIcon: props.tooltipIcon ?? layout.tooltipIcon ?? (
-      <ExclamationCircleOutline/>
+      <ExclamationCircleOutline />
     ),
   }
 }
 
-function useOverflow<Container extends HTMLElement,
-  Content extends HTMLElement>() {
+function useOverflow<
+  Container extends HTMLElement,
+  Content extends HTMLElement
+>() {
   const [overflow, setOverflow] = useState(false)
   const containerRef = useRef<Container>()
   const contentRef = useRef<Content>()
@@ -100,17 +106,19 @@ function useOverflow<Container extends HTMLElement,
 }
 
 const ICON_MAP = {
-  error: <CloseCircleOutline/>,
-  success: <CheckCircleOutline/>,
-  warning: <ExclamationCircleOutline/>,
+  error: <CloseCircleOutline />,
+  success: <CheckCircleOutline />,
+  warning: <ExclamationCircleOutline />,
 }
 
-export const BaseItem: React.FC<IFormItemProps> = ({children, ...props}) => {
+export const BaseItem: React.FC<IFormItemProps> = ({ children, ...props }) => {
   const [active, setActive] = useState(false)
   const formLayout = useFormItemLayout(props)
 
-  const {containerRef, contentRef, overflow} = useOverflow<HTMLDivElement,
-    HTMLLabelElement>()
+  const { containerRef, contentRef, overflow } = useOverflow<
+    HTMLDivElement,
+    HTMLLabelElement
+  >()
   const {
     label,
     style,
@@ -132,12 +140,12 @@ export const BaseItem: React.FC<IFormItemProps> = ({children, ...props}) => {
     tooltipLayout,
     tooltip,
     tooltipIcon,
-    asterisk
+    asterisk,
   } = formLayout
-  const labelStyle = {...formLayout.labelStyle}
-  const wrapperStyle = {...formLayout.wrapperStyle}
+  const labelStyle = { ...formLayout.labelStyle }
+  const wrapperStyle = { ...formLayout.wrapperStyle }
   // 固定宽度
-  let enableCol = false
+  // let enableCol = false
   if (labelWidth || wrapperWidth) {
     if (labelWidth) {
       labelStyle.width = labelWidth === 'auto' ? undefined : labelWidth
@@ -150,7 +158,7 @@ export const BaseItem: React.FC<IFormItemProps> = ({children, ...props}) => {
     // 栅格模式
   }
 
-  const prefixCls = usePrefixCls('formily-item',)
+  const prefixCls = usePrefixCls('formily-item')
   const formatChildren =
     feedbackLayout === 'popover' ? (
       <Popover
@@ -189,17 +197,19 @@ export const BaseItem: React.FC<IFormItemProps> = ({children, ...props}) => {
 
   const renderLabelText = () => {
     const labelChildren = (
-      <div className={`${prefixCls}-label-content`} ref={containerRef}>
-        <label ref={contentRef}>{label}</label>
+      <>
         {asterisk && <span className={`${prefixCls}-asterisk`}>{'*'}</span>}
-      </div>
+        <div className={`${prefixCls}-label-content`} ref={containerRef}>
+          <label ref={contentRef}>{label}</label>
+        </div>
+      </>
     )
 
     if ((tooltipLayout === 'text' && tooltip) || overflow) {
       return (
         <Popover
           placement="top"
-          align={{offset: [0, 10]}}
+          align={{ offset: [0, 10] }}
           content={getOverflowTooltip()}
         >
           {labelChildren}
@@ -210,14 +220,15 @@ export const BaseItem: React.FC<IFormItemProps> = ({children, ...props}) => {
   }
 
   const renderTooltipIcon = () => {
-
     if (tooltip && tooltipLayout === 'icon' && !overflow) {
       return (
         <span className={`${prefixCls}-label-tooltip-icon`}>
-          <Popover placement="right"
-                   mode="dark"
-                   trigger="click"
-                   content={tooltip}>
+          <Popover
+            placement="right"
+            mode="dark"
+            trigger="click"
+            content={tooltip}
+          >
             <span>{tooltipIcon}</span>
           </Popover>
         </span>
@@ -232,7 +243,7 @@ export const BaseItem: React.FC<IFormItemProps> = ({children, ...props}) => {
         className={cls({
           [`${prefixCls}-label`]: true,
           [`${prefixCls}-label-tooltip`]:
-          (tooltip && tooltipLayout === 'text') || overflow,
+            (tooltip && tooltipLayout === 'text') || overflow,
         })}
         style={labelStyle}
       >
@@ -262,7 +273,8 @@ export const BaseItem: React.FC<IFormItemProps> = ({children, ...props}) => {
         [`${prefixCls}-label-wrap`]: !!labelWrap,
         [`${prefixCls}-control-wrap`]: !!wrapperWrap,
         // [`${prefixCls}-no-form-layout`]: !formLayout.__layout__,
-        [`${prefixCls}-bordered-none`]: bordered === false || !!inset || !!feedbackIcon,
+        [`${prefixCls}-bordered-none`]:
+          bordered === false || !!inset || !!feedbackIcon,
         [props.className]: !!props.className,
       })}
       title={layout === 'vertical' && renderLabel()}
@@ -305,19 +317,19 @@ export const BaseItem: React.FC<IFormItemProps> = ({children, ...props}) => {
           </div>
         </div>
         {!!feedbackText &&
-        feedbackLayout !== 'popover' &&
-        feedbackLayout !== 'none' && (
-          <div
-            className={cls({
-              [`${prefixCls}-${feedbackStatus}-help`]: !!feedbackStatus,
-              [`${prefixCls}-help`]: true,
-              [`${prefixCls}-help-enter`]: true,
-              [`${prefixCls}-help-enter-active`]: true,
-            })}
-          >
-            {feedbackText}
-          </div>
-        )}
+          feedbackLayout !== 'popover' &&
+          feedbackLayout !== 'none' && (
+            <div
+              className={cls({
+                [`${prefixCls}-${feedbackStatus}-help`]: !!feedbackStatus,
+                [`${prefixCls}-help`]: true,
+                [`${prefixCls}-help-enter`]: true,
+                [`${prefixCls}-help-enter-active`]: true,
+              })}
+            >
+              {feedbackText}
+            </div>
+          )}
       </div>
     </List.Item>
   )
@@ -327,7 +339,7 @@ export const BaseItem: React.FC<IFormItemProps> = ({children, ...props}) => {
 export const FormItem: ComposeFormItem = connect(
   BaseItem,
   mapProps(
-    {validateStatus: true, title: 'label', required: true},
+    { validateStatus: true, title: 'label', required: true },
     (props, field) => {
       if (isVoidField(field))
         return {

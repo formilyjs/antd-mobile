@@ -5,21 +5,34 @@
 @form-item-margin-bottom: 0px;
 
 .@{form-item-cls} {
-  display: flex;
+  + .@{form-item-cls} {
+    border-top: none;
+  }
+
+  //display: flex;
   margin-bottom: @form-item-margin-bottom;
   position: relative;
   font-size: @font-size;
   --prefix-width: 6em;
+  --align-items: start;
 
   &-label {
     line-height: @height-base;
     min-height: @height-base - 2;
   }
 
-  .adm-list-item {
+  &.@{ant-prefix}-list-item {
+    padding-left: 20px;
+  }
+
+  .@{ant-prefix}-list-item {
     padding-left: 0;
   }
-  .adm-list-card {
+
+  .@{ant-prefix}-list-item-content {
+  }
+
+  .@{ant-prefix}-list-card {
     border-radius: 0;
     margin: 4px;
   }
@@ -103,6 +116,8 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    display: inline-block;
+    //padding-left: 4px;
   }
 
   &-tooltip {
@@ -164,7 +179,7 @@
 }
 
 .@{form-item-cls}-control {
-  flex: 1;
+  //flex: 1;
   max-width: 100%;
 
   .@{form-item-cls}-control-content {
@@ -509,10 +524,15 @@
       align-items: flex-start;
     }
 
+    .@{form-item-cls}-asterisk {
+      top: unset;
+      margin-left: -10px;
+    }
+
     .@{form-item-cls}-label {
       min-height: @height-base - 10;
       line-height: 1.5715;
-      margin-bottom: 4px;
+      margin-bottom: 10px;
     }
   }
 }
@@ -554,10 +574,13 @@
 
 .@{form-item-cls}-asterisk {
   color: @error-color;
-  margin-left: 4px;
+  user-select: none;
+  margin-left: -12px;
   display: inline-block;
   font-family: SimSun, sans-serif;
   font-size: @font-size - 4;
+  position: absolute;
+  top: 1px;
 }
 
 .@{form-item-cls}-colon {
