@@ -2,10 +2,6 @@
 
 @s-device-width: 395px;
 
-body {
-  background: #f4f4f4;
-}
-
 .gen-device-style(@scale) {
   /*width: @s-device-width * @scale;
   min-width: @s-device-width * @scale;
@@ -31,8 +27,9 @@ body {
     overflow: auto;
     margin: 0 10px;
     //background-color: #fff;
-    cursor: url('https://gw.alipayobjects.com/mdn/rms_4f0ff1/afts/img/A*eRn5S6F8qVgAAAAAAAAAAABkARQnAQ') 10 10,
-    auto;
+    cursor: url('https://gw.alipayobjects.com/mdn/rms_4f0ff1/afts/img/A*eRn5S6F8qVgAAAAAAAAAAABkARQnAQ')
+        10 10,
+      auto;
     width: 375px;
     touch-action: pan-y;
     user-select: none;
@@ -58,8 +55,9 @@ body {
   &.iframe {
     display: block;
     margin-top: 0;
-    cursor: url('https://gw.alipayobjects.com/mdn/rms_4f0ff1/afts/img/A*eRn5S6F8qVgAAAAAAAAAAABkARQnAQ') 10 10,
-    auto;
+    cursor: url('https://gw.alipayobjects.com/mdn/rms_4f0ff1/afts/img/A*eRn5S6F8qVgAAAAAAAAAAABkARQnAQ')
+        10 10,
+      auto;
   }
 
   .mobile-container {
@@ -68,6 +66,7 @@ body {
 
     &::after {
       content: '';
+      background: #f4f4f4;
       position: absolute;
       border-left: 1px solid #dfdfdf87;
       border-right: 1px solid #dfdfdf87;
