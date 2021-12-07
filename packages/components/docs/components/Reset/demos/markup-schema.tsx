@@ -47,7 +47,7 @@ export const Demo1 = () => {
             default="123"
             required
             x-decorator="FormItem"
-            x-component="Input"
+            x-component="Input.TextArea"
           />
         </SchemaField>
       </FormLayout>
@@ -87,7 +87,7 @@ export const Demo2 = () => {
             default="123"
             required
             x-decorator="FormItem"
-            x-component="Input"
+            x-component="Input.TextArea"
           />
         </SchemaField>
       </FormLayout>
