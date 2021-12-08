@@ -1,6 +1,13 @@
 import React from 'react'
 // @ts-ignore
-import { FormLayout, Input, FormItem, Checkbox, FormButtonGroup, Submit, } from '@formily/antd-mobile'
+import {
+  FormLayout,
+  Input,
+  FormItem,
+  Checkbox,
+  FormButtonGroup,
+  Submit,
+} from '@formily/antd-mobile'
 import { Dialog } from 'antd-mobile'
 import { createForm } from '@formily/core'
 import { FormProvider, createSchemaField } from '@formily/react'
@@ -9,7 +16,7 @@ const SchemaField = createSchemaField({
   components: {
     Input,
     FormItem,
-    Checkbox
+    Checkbox,
   },
 })
 
@@ -52,34 +59,29 @@ export default () => {
             x-decorator="FormItem"
             x-component="Checkbox"
             x-component-props={{
-              placeholder: '请选择',
               block: true,
             }}
             enum={ItemList}
           />
-          <SchemaField.String
+          <SchemaField.Array
             name="items-multiple"
             title="选项组"
             x-decorator="FormItem"
             x-component="Checkbox.Group"
             x-component-props={{
-              placeholder: '请选择',
-              layout: 'horizontal'
+              layout: 'horizontal',
             }}
             default={['1', '4']}
             enum={ItemList}
           />
-          <SchemaField.String
+          <SchemaField.Array
             name="items-blocks"
             title="块级布局"
             x-decorator="FormItem"
             x-component="Checkbox.Group"
-            x-component-props={{
-              placeholder: '请选择'
-            }}
+            x-component-props={{}}
             enum={ItemList}
           />
-
         </SchemaField>
       </FormLayout>
       <FormButtonGroup>
