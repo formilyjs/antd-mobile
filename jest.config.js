@@ -1,15 +1,24 @@
-const path = require('path')
+// const path = require('path')
 module.exports = {
+  preset: 'ts-jest',
   collectCoverage: true,
   verbose: true,
   testEnvironment: 'jsdom',
-  preset: 'ts-jest',
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
+  transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$'],
+  transform: {
+    '^.+\\.(ts|tsx)?$': 'ts-jest/dist',
+    '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
+      '<rootDir>/tests/fileTransformer.ts',
+  },
   testMatch: ['**/__tests__/**/*.spec.[jt]s?(x)'],
   setupFilesAfterEnv: [
-    require.resolve('jest-dom/extend-expect'),
+    require.resolve('@testing-library/jest-dom/extend-expect'),
     './global.config.ts',
   ],
-  // moduleNameMapper: process.env.TEST_ENV === 'production' ? undefined : alias,
+  moduleNameMapper: {
+    '\\.(css|less)$': '<rootDir>/tests/mocks/style-mock.ts',
+  },
   globals: {
     'ts-jest': {
       babelConfig: false,
