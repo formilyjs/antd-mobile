@@ -1,12 +1,13 @@
 import React, { createContext, useContext } from 'react'
-import { Space, Input as AntInput, Tag } from 'antd-mobile'
+import { Tag } from 'antd-mobile'
 import { InputProps } from 'antd-mobile/es/components/input'
 import { SelectorProps } from 'antd-mobile/es/components/selector'
+import { DatePickerProps } from '../date-picker'
 import { isArr, isValid } from '@formily/shared'
 import { Field } from '@formily/core'
 import { observer, useField } from '@formily/react'
 import cls from 'classnames'
-import { usePrefixCls } from '../__builtins__'
+import { formatMomentValue, usePrefixCls } from '../__builtins__'
 
 interface IPreviewTextProps {
   prefixCls?: string
@@ -82,10 +83,22 @@ const Selector: React.FC<SelectorProps<any> & IPreviewTextProps> = observer(
     )
   }
 )
+const DatePicker: React.FC<DatePickerProps<any> & IPreviewTextProps> = (
+  props
+) => {
+  const placeholder = usePlaceholder()
+  const prefixCls = usePrefixCls('form-text', props)
+  const getLabels = () => {
+    const labels = formatMomentValue(props.value, props.format, placeholder)
+    return isArr(labels) ? labels.join('~') : labels
+  }
+  return <div className={cls(prefixCls, props.className)}>{getLabels()}</div>
+}
 
 Text.Input = Input
 Text.Selector = Selector
 Text.Placeholder = Placeholder
+Text.DatePicker = DatePicker
 Text.usePlaceholder = usePlaceholder
 
 export const PreviewText = Text
