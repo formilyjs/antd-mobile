@@ -28,8 +28,9 @@ export interface IFormLayoutProps extends ListProps {
   __layout__?: boolean
 }
 
-export const FormLayoutDeepContext = createContext<IFormLayoutProps>(null)
-export const FormLayoutShallowContext = createContext<IFormLayoutProps>(null)
+export type IFormLayoutContext = IFormLayoutProps
+export const FormLayoutDeepContext = createContext<IFormLayoutContext>(null)
+export const FormLayoutShallowContext = createContext<IFormLayoutContext>(null)
 export const useFormDeepLayout = () => useContext(FormLayoutDeepContext)
 export const useFormShallowLayout = () => useContext(FormLayoutShallowContext)
 export const useFormLayout = () => ({
@@ -38,13 +39,13 @@ export const useFormLayout = () => ({
 })
 
 export const FormLayout: React.FC<IFormLayoutProps> & {
-  useFormLayout: () => IFormLayoutProps,
-  useFormDeepLayout: () => IFormLayoutProps,
-  useFormShallowLayout: () => IFormLayoutProps,
-} = ({shallow, children, prefixCls, className, style, ...props}) => {
+  useFormLayout: () => IFormLayoutContext
+  useFormDeepLayout: () => IFormLayoutContext
+  useFormShallowLayout: () => IFormLayoutContext
+} = ({ shallow, children, prefixCls, className, style, ...props }) => {
   const deepLayout = useFormDeepLayout()
-  const formPrefixCls = usePrefixCls('form', {prefixCls})
-  const layoutPrefixCls = usePrefixCls('formily-layout', {prefixCls})
+  const formPrefixCls = usePrefixCls('form', { prefixCls })
+  const layoutPrefixCls = usePrefixCls('formily-layout', { prefixCls })
   const layoutClassName = cls(
     layoutPrefixCls,
     {

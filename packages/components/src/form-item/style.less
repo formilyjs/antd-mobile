@@ -134,14 +134,26 @@
 }
 
 .@{form-item-cls}-label-align-left {
-  > .@{form-item-cls}-label {
+  .@{form-item-cls}-label {
     justify-content: flex-start;
   }
 }
 
 .@{form-item-cls}-label-align-right {
-  > .@{form-item-cls}-label {
-    justify-content: flex-end;
+  .@{form-item-cls}-label {
+    flex-direction: row-reverse;
+  }
+
+  .@{ant-prefix}-list-item-content-prefix {
+    padding-right: 20px;
+  }
+
+  .@{form-item-cls}-asterisk {
+    right: -10px;
+  }
+
+  .@{form-item-cls}-label-tooltip-icon {
+    margin-right: 4px;
   }
 }
 
@@ -155,7 +167,7 @@
 }
 
 .@{form-item-cls}-feedback-layout-terse {
-  margin-bottom: 0px;
+  margin-bottom: 0;
 
   &.@{form-item-cls}-feedback-has-text:not(.@{form-item-cls}-inset) {
     margin-bottom: 0;
@@ -171,7 +183,7 @@
 }
 
 .@{form-item-cls}-feedback-layout-none {
-  margin-bottom: 0px;
+  margin-bottom: 0;
 
   &.@{form-item-cls}-feedback-has-text:not(.@{form-item-cls}-inset) {
     margin-bottom: 0;
@@ -538,7 +550,7 @@
 }
 
 .@{form-item-cls}-feedback-layout-popover {
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
 
 .@{form-item-cls}-label-tooltip-icon {
@@ -594,7 +606,7 @@
   min-height: @form-item-margin-bottom - 2;
   color: rgba(0, 0, 0, 0.45);
   transition: color 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
-  padding-top: 0px;
+  padding-top: 0;
 }
 
 .@{form-item-cls}-fullness {

@@ -16,6 +16,9 @@ export const formatMomentValue = (
 ): string | string[] => {
   const formatDate = (date: any, format: any, i = 0) => {
     if (!date) return placeholder
+    if (!moment.isMoment(date)) {
+      date = moment(date)
+    }
     if (isArr(format)) {
       const _format = format[i]
       if (isFn(_format)) {
