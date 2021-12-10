@@ -79,7 +79,9 @@ export default () => {
             title="块级布局"
             x-decorator="FormItem"
             x-component="Checkbox.Group"
-            x-component-props={{}}
+            x-component-props={{
+              layoutBlock: true,
+            }}
             enum={ItemList}
           />
         </SchemaField>

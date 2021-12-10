@@ -41,7 +41,6 @@ const MobileLayout: React.FC<IRouteComponentProps> = ({
   return (
     <Layout {...props}>
       <div className="__dumi-default-mobile-content">
-        <article>{children}</article>
         {demo &&
           (demo.simulator !== false ? (
             <Device
@@ -55,6 +54,7 @@ const MobileLayout: React.FC<IRouteComponentProps> = ({
           ) : (
             <></>
           ))}
+        <article>{children}</article>
       </div>
     </Layout>
   )
