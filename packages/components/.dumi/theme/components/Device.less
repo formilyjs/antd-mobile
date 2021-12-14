@@ -68,8 +68,10 @@
     flex-direction: column;
     ////width: @s-device-width;
     //min-width: @s-device-width;
-    height: @s-device-width * @s-device-ratio - 20;
-    min-height: @s-device-width * @s-device-ratio - 20;
+    //height: @s-device-width * @s-device-ratio - 20;
+    min-height: calc(100vh - 140px);
+    height: calc(100vh - 140px);
+    //min-height: @s-device-width * @s-device-ratio - 20;
     //border-radius: 32px;
     overflow: hidden;
     .gen-device-style(1);
@@ -100,7 +102,7 @@
   }
 
   &[data-mode='site'] {
-    top: @s-nav-height + @s-device-shell-width + @s-device-gap-top;
+    top: 80px;
   }
 
   &-status,

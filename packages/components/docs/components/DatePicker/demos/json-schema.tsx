@@ -24,30 +24,48 @@ const form = createForm()
 const schema = {
   type: 'object',
   properties: {
-    name: {
-      type: 'string',
-      title: '姓名',
+    date: {
+      title: '普通日期',
       'x-decorator': 'FormItem',
-      'x-decorator-props': {
-        feedbackLayout: 'popover',
-        tooltip: '请输入真实姓名',
-      },
-      'x-component': 'Input',
-      'x-component-props': {
-        placeholder: '请输入姓名',
-      },
-      'x-validator': [{ required: true, message: '姓名不能为空' }],
-    },
-    address: {
+      'x-component': 'DatePicker',
       type: 'string',
-      title: '日期',
-      default: '2021-12-1',
+    },
+    week: {
+      title: '周选择',
       'x-decorator': 'FormItem',
       'x-component': 'DatePicker',
       'x-component-props': {
-        placeholder: '请选择',
+        picker: 'week',
+      },
+      type: 'string',
+    },
+    month: {
+      title: '月选择',
+      'x-decorator': 'FormItem',
+      'x-component': 'DatePicker',
+      'x-component-props': {
+        picker: 'month',
+      },
+      type: 'string',
+    },
+    quarter: {
+      title: '财年选择',
+      'x-decorator': 'FormItem',
+      'x-component': 'DatePicker',
+      'x-component-props': {
+        picker: 'quarter',
         clearable: true,
       },
+      type: 'string',
+    },
+    year: {
+      title: '年选择',
+      'x-decorator': 'FormItem',
+      'x-component': 'DatePicker',
+      'x-component-props': {
+        picker: 'year',
+      },
+      type: 'string',
     },
   },
 }

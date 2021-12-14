@@ -1,16 +1,16 @@
-import React from 'react'
 // @ts-ignore
 import {
-  Input,
   DatePicker,
-  FormLayout,
-  FormItem,
   FormButtonGroup,
+  FormItem,
+  FormLayout,
+  Input,
   Submit,
 } from '@formily/antd-mobile'
-import { Dialog } from 'antd-mobile'
 import { createForm } from '@formily/core'
-import { FormProvider, createSchemaField } from '@formily/react'
+import { createSchemaField, FormProvider } from '@formily/react'
+import { Dialog } from 'antd-mobile'
+import React from 'react'
 
 const SchemaField = createSchemaField({
   components: {
@@ -33,33 +33,49 @@ export default () => {
     <FormProvider form={form}>
       <FormLayout>
         <SchemaField>
+          =
           <SchemaField.String
-            name="name"
-            title="姓名"
+            name="date"
+            required
+            title="普通日期"
             x-decorator="FormItem"
-            x-decorator-props={{
-              feedbackLayout: 'popover',
-              tooltip: <span>请输入真实姓名</span>,
-            }}
-            x-validator={[{ required: true, message: '姓名不能为空' }]}
-            x-component="Input"
+            x-component="DatePicker"
+          />
+          <SchemaField.String
+            name="week"
+            title="周选择"
+            x-decorator="FormItem"
+            x-component="DatePicker"
             x-component-props={{
-              placeholder: '请输入姓名',
+              picker: 'week',
             }}
           />
           <SchemaField.String
-            name="birthday"
-            title="生日"
-            default={new Date()}
+            name="month"
+            title="月选择"
             x-decorator="FormItem"
-            x-decorator-props={{
-              feedbackLayout: 'terse',
-            }}
             x-component="DatePicker"
             x-component-props={{
-              placeholder: '请选择',
-              format: 'YYYY-MM-DD',
+              picker: 'month',
+            }}
+          />
+          <SchemaField.String
+            name="quarter"
+            title="财年选择"
+            x-decorator="FormItem"
+            x-component="DatePicker"
+            x-component-props={{
+              picker: 'quarter',
               clearable: true,
+            }}
+          />
+          <SchemaField.String
+            name="year"
+            title="年选择"
+            x-decorator="FormItem"
+            x-component="DatePicker"
+            x-component-props={{
+              picker: 'year',
             }}
           />
         </SchemaField>
