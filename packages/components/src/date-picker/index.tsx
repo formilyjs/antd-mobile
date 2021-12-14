@@ -1,13 +1,16 @@
 import React, { useRef, useState } from 'react'
-import moment from 'moment'
 import cls from 'classnames'
+import union from 'lodash/union'
+import moment from 'moment'
 import { connect, mapReadPretty } from '@formily/react'
 import { DatePicker as AntdDatePicker, VirtualInput } from 'antd-mobile'
-import { DatePickerProps as AntdDatePickerProps } from 'antd-mobile/es/components/date-picker'
-import { VirtualInputRef } from 'antd-mobile/es/components/virtual-input'
-import { PreviewText } from '../preview-text'
-import { formatMomentValue, momentable, usePrefixCls } from '../__builtins__'
 import { CloseCircleFill } from 'antd-mobile-icons'
+import { DatePickerProps as AntdDatePickerProps } from 'antd-mobile/es/components/date-picker'
+
+import QuarterDatePicker from './quarter-picker'
+import { VirtualInputRef } from 'antd-mobile/es/components/virtual-input'
+import { formatMomentValue, momentable, usePrefixCls } from '../__builtins__'
+import { PreviewText } from '../preview-text'
 
 type DateValue = string | Date | moment.Moment | moment.Moment[]
 
@@ -76,15 +79,39 @@ export const BaseDatePicker: React.FC<IDatePickerProps<AntdDatePickerProps>> = (
     format,
     clearable,
     style,
+    picker,
+    precision: _precision,
     ...dateProps
   } = mapDateFormat<AntdDatePickerProps>()(props)
   const inputRef = useRef<VirtualInputRef>()
   const [visible, setVisible] = useState(false)
 
-  const onDateChange = (value) => {
+  const onDateChange = (value: Date) => {
     onChange?.(value)
   }
+
   const val = formatMomentValue(value, format, '')
+
+  const renderDatePicker = () => {
+    const precision = union([picker], [_precision])?.[0]
+
+    const props = {
+      ...dateProps,
+      precision,
+      visible,
+      value: (value as moment.Moment)?.toDate(),
+      getContainer: null,
+      onClose: () => {
+        setVisible(false)
+        inputRef.current.focus()
+      },
+      onConfirm: onDateChange,
+    }
+    const Picker =
+      precision?.indexOf('quarter') > -1 ? QuarterDatePicker : AntdDatePicker
+
+    return <Picker {...props} />
+  }
 
   return (
     <div className={cls(prefix)}>
@@ -102,17 +129,7 @@ export const BaseDatePicker: React.FC<IDatePickerProps<AntdDatePickerProps>> = (
           <CloseCircleFill />
         </div>
       )}
-      <AntdDatePicker
-        {...dateProps}
-        getContainer={null}
-        value={(value as moment.Moment)?.toDate()}
-        visible={visible}
-        onClose={() => {
-          setVisible(false)
-          inputRef.current.focus()
-        }}
-        onConfirm={onDateChange}
-      />
+      {renderDatePicker()}
     </div>
   )
 }

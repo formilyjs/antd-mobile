@@ -1,13 +1,13 @@
-import React, { createContext, useContext } from 'react'
+import { Field } from '@formily/core'
+import { observer, useField } from '@formily/react'
+import { isArr, isValid } from '@formily/shared'
 import { Tag } from 'antd-mobile'
 import { InputProps } from 'antd-mobile/es/components/input'
 import { SelectorProps } from 'antd-mobile/es/components/selector'
-import { DatePickerProps } from '../date-picker'
-import { isArr, isValid } from '@formily/shared'
-import { Field } from '@formily/core'
-import { observer, useField } from '@formily/react'
 import cls from 'classnames'
+import React, { createContext, useContext } from 'react'
 import { formatMomentValue, usePrefixCls } from '../__builtins__'
+import { IDatePickerProps } from '../date-picker'
 
 interface IPreviewTextProps {
   prefixCls?: string
@@ -83,7 +83,8 @@ const Selector: React.FC<SelectorProps<any> & IPreviewTextProps> = observer(
     )
   }
 )
-const DatePicker: React.FC<DatePickerProps<any> & IPreviewTextProps> = (
+
+const DatePicker: React.FC<IDatePickerProps<any> & IPreviewTextProps> = (
   props
 ) => {
   const placeholder = usePlaceholder()
