@@ -2845,9 +2845,9 @@ antd-mobile-v5-count@^1.0.1:
   integrity sha1-hfIMRtFjXCToVrz1rVXoyY5EpSM=
 
 antd-mobile@^5.0.0-rc.4:
-  version "5.0.0-rc.3"
-  resolved "https://registry.npmmirror.com/antd-mobile/download/antd-mobile-5.0.0-rc.3.tgz#8eb4e2f0f5fdf4e316ba6e2aa5ab025ff887e8d6"
-  integrity sha512-ivUNxVd/+l8iAzkm3zUtp0MU3+x2hekPBlFd+dydr1LMwKjFCmS6FSpDiO/qi0ZVb/NTZmuNHc9aHV1GYtONyg==
+  version "5.0.0-rc.4"
+  resolved "https://registry.npmmirror.com/antd-mobile/download/antd-mobile-5.0.0-rc.4.tgz#7aafcb8a5fa41d01140ee2a30a466067c6770fcd"
+  integrity sha512-ffSHfSXNcYTFQikk8ewrOsvwlFEiD6NLrPhreFwmDfY9CvXeKWL3eB19HA16p7uCrh2swbb28KMbjEeOLkjW0g==
   dependencies:
     "@react-spring/web" "^9.3.1"
     "@types/resize-observer-browser" "^0.1.6"
