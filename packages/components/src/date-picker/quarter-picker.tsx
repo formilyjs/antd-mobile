@@ -1,9 +1,9 @@
 import React, { useCallback, useMemo } from 'react'
-import { usePersistFn } from 'ahooks'
+import { useCreation } from 'ahooks'
 import { Picker } from 'antd-mobile'
 import { DatePickerProps as AntdDatePickerProps } from 'antd-mobile/es/components/date-picker/date-picker'
-import { QuarterPrecision } from './date-quarter-utils'
 import * as quarterUtils from './date-quarter-utils'
+import { QuarterPrecision } from './date-quarter-utils'
 
 const thisYear = new Date().getFullYear()
 
@@ -30,10 +30,13 @@ export const QuarterDatePicker: React.FC<AntdDatePickerProps> = (props) => {
     props.onConfirm?.(quarterUtils.convertStringArrayToDate(val))
   }, [])
 
-  const onSelect = usePersistFn((val: string[]) => {
-    const date = quarterUtils.convertStringArrayToDate(val)
-    props.onSelect?.(date)
-  })
+  const onSelect = useCreation(
+    () => (val: string[]) => {
+      const date = quarterUtils.convertStringArrayToDate(val)
+      props.onSelect?.(date)
+    },
+    []
+  )
 
   return (
     <Picker

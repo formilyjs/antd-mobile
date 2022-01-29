@@ -1,15 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react'
 import cls from 'classnames'
-import { usePrefixCls, pickDataProps } from '../__builtins__'
+import { pickDataProps, usePrefixCls } from '../__builtins__'
 import { isVoidField } from '@formily/core'
 import { connect, mapProps } from '@formily/react'
-import { useFormLayout, FormLayoutShallowContext } from '../form-layout'
-import { Popover, List } from 'antd-mobile'
+import { FormLayoutShallowContext, useFormLayout } from '../form-layout'
+import { List, Popover } from 'antd-mobile'
 import { ListItemProps } from 'antd-mobile/es/components/list'
 import {
-  ExclamationCircleOutline,
-  CloseCircleOutline,
   CheckCircleOutline,
+  CloseCircleOutline,
+  ExclamationCircleOutline,
 } from 'antd-mobile-icons'
 
 export interface IFormItemProps extends ListItemProps {
