@@ -1,0 +1,30 @@
+@import (reference) '~antd-mobile/es/global/global.css';
+@import '../global/global';
+
+@cascade-picker-cls: ~'@{ant-prefix}-formily-cascade-picker';
+
+.@{cascade-picker-cls} {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+
+  --placeholder-color: var(--adm-color-light);
+
+  .@{ant-prefix}-virtual-input {
+    flex: 1;
+  }
+
+  &-clear {
+    flex: none;
+    margin-left: 8px;
+    color: var(--placeholder-color);
+    padding: 3px;
+    cursor: pointer;
+
+    .antd-mobile-icon {
+      display: block;
+      font-size: 14px;
+    }
+  }
+}
