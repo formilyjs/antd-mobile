@@ -4,7 +4,7 @@
     "moduleResolution": "node",
     "jsx": "react",
     "module": "commonjs",
-    "target": "es5",
+    "target": "es6",
     "allowJs": false,
     "noUnusedLocals": false,
     "preserveConstEnums": true,
@@ -14,9 +14,12 @@
     "declaration": true,
     "experimentalDecorators": true,
     "downlevelIteration": true,
+    "importHelpers": true,
     "baseUrl": ".",
     "paths": {
-      "@formily/*": ["packages/*/src"]
+      "@formily/*": [
+        "packages/*/src"
+      ]
     }
   }
 }
