@@ -38,7 +38,7 @@
     "access": "public"
   },
   "peerDependencies": {
-    "antd-mobile": "^5.0.0-rc.23",
+    "antd-mobile": "^5.24.2",
     "antd-mobile-icons": "^0.2.2",
     "react": ">=16.8.0 || >=17.0.0",
     "react-dom": ">=16.8.0",

@@ -26,8 +26,8 @@ export interface ICascadePickerProps extends AntCascadePickerProps {
 }
 
 const defaultDisplayRender = (
-  label: ReactNode[],
-  selectedOptions: (PickerColumnItem | null)[]
+  label: ReactNode[]
+  // selectedOptions: (PickerColumnItem | null)[]
 ) => label?.join(' / ')
 
 export const BasePicker: React.FC<ICascadePickerProps> = ({

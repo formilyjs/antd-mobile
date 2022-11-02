@@ -17,9 +17,7 @@
     "importHelpers": true,
     "baseUrl": ".",
     "paths": {
-      "@formily/*": [
-        "packages/*/src"
-      ]
+      "@formily/*": ["packages/*/src"]
     }
   }
 }

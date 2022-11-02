@@ -2,7 +2,7 @@
 title: Formily-Alibaba unified front-end form solution
 order: 10
 hero:
-  title: Formily AntdMobile
+  title: Formily Antd Mobile
   desc: Formily Component System Based on Ant Design Mobile Encapsulation
   actions:
     - text: Home Site
@@ -37,7 +37,7 @@ $ npm install --save @formily/core @formily/react @formily/antd-mobile
  * defaultShowCode: true
  */
 import React from 'react'
-import { NumberPicker, FormItem, Space } from '@formily/antd-mobile'
+import { NumberPicker, FormItem, Space } from '@formily/ant-mobile'
 import { createForm } from '@formily/core'
 import { FormProvider, FormConsumer, Field } from '@formily/react'
 

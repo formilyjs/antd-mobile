@@ -2,7 +2,7 @@
 title: Formily - 阿里巴巴统一前端表单解决方案
 order: 10
 hero:
-  title: Formily AntdMobile
+  title: Formily Antd Mobile
   desc: 基于Ant Design Mobile封装的优雅且易用的Formily2.x组件体系
   actions:
     - text: 主站文档
@@ -37,7 +37,7 @@ $ npm install --save @formily/core @formily/react @formily/antd-mobile
  * defaultShowCode: true
  */
 import React from 'react'
-import { NumberPicker, FormItem, Space } from '@formily/antd-mobile'
+import { NumberPicker, FormItem, Space } from '@formily/ant-mobile'
 import { createForm } from '@formily/core'
 import { FormProvider, FormConsumer, Field } from '@formily/react'
 
