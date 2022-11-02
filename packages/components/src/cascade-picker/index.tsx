@@ -8,7 +8,7 @@ import {
 } from 'antd-mobile/es/components/picker'
 import { CascadePicker as AntCascadePicker, VirtualInput } from 'antd-mobile'
 import { connect, mapProps, mapReadPretty } from '@formily/react'
-import { usePrefixCls } from '../__builtins__'
+import { usePrefixCls, usePropsValue } from '../__builtins__'
 import cls from 'classnames'
 import { CloseCircleFill } from 'antd-mobile-icons'
 import PreviewText from '../preview-text'
@@ -34,18 +34,21 @@ export const BasePicker: React.FC<ICascadePickerProps> = ({
   placeholder,
   className,
   displayRender = defaultDisplayRender,
-  value,
-  onChange,
+  value: propValue,
+  onChange: propOnChange,
   clearable,
   style,
   ...props
 }) => {
   const prefix = usePrefixCls('formily-cascade-picker')
-
   const inputRef = useRef<VirtualInputRef>()
   const labelItems = useRef<PickerColumnItem[]>([])
   const [visible, setVisible] = useState(false)
   const [label, setLabel] = useState<string | undefined>()
+  const [value, onChange] = usePropsValue({
+    defaultValue: propValue,
+    onChange: propOnChange,
+  })
 
   useEffect(() => {
     setLabel(
@@ -90,7 +93,7 @@ export const BasePicker: React.FC<ICascadePickerProps> = ({
         <div
           className={`${prefix}-clear`}
           onClick={() => {
-            onChange?.([], { items: [] })
+            onChange?.([], { items: [], columns: [] })
             labelItems.current = []
           }}
         >

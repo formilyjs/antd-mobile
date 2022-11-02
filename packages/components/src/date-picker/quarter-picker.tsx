@@ -56,13 +56,14 @@ export const QuarterDatePicker: React.FC<AntdDatePickerProps> = (props) => {
       title={props.title}
       stopPropagation={props.stopPropagation}
     >
-      {(items) =>
+      {(items, actions) =>
         props.children?.(
           items.length === 0
             ? null
             : quarterUtils.convertStringArrayToDate(
                 items.map((item) => item?.value)
-              )
+              ),
+          actions
         )
       }
     </Picker>

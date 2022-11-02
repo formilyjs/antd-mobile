@@ -1,5 +1,6 @@
 import { Switch as AntdSwitch } from 'antd-mobile'
 import { connect, mapProps } from '@formily/react'
+import { isNum } from '@formily/shared'
 
 export const Switch = connect(
   AntdSwitch,
@@ -9,6 +10,8 @@ export const Switch = connect(
     },
     (props) => {
       const onChange = props.onChange
+      props.checked = isNum(props.checked) ? props.checked === 1 : props.checked
+
       delete props['value']
       return {
         ...props,

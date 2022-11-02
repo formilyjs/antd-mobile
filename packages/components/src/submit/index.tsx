@@ -13,7 +13,7 @@ export interface ISubmitProps extends ButtonProps {
 }
 
 export const Submit: React.FC<ISubmitProps> = observer(
-  ({onSubmit, onSubmitFailed, onSubmitSuccess, ...props}: ISubmitProps) => {
+  ({ onSubmit, onSubmitFailed, onSubmitSuccess, ...props }: ISubmitProps) => {
     const form = useParentForm()
     return (
       <Button
@@ -34,6 +34,10 @@ export const Submit: React.FC<ISubmitProps> = observer(
         <>{props.children}</>
       </Button>
     )
-  })
+  },
+  {
+    forwardRef: true,
+  }
+)
 
 export default Submit

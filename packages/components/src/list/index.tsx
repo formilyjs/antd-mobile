@@ -4,7 +4,6 @@ import {
   RecursionField,
   useField,
   useFieldSchema,
-  SchemaExpressionScopeContext,
 } from '@formily/react'
 import { ArrayField } from '@formily/core'
 import { List as AntdList } from 'antd-mobile'
@@ -82,18 +81,16 @@ export const List: ComposedList = observer(
 
         return (
           <ArrayBase.Item key={index} index={index} record={item}>
-            <SchemaExpressionScopeContext.Provider value={{ $record: item }}>
-              <RecursionField
-                schema={items}
-                name={index}
-                filterProperties={(sc) => {
-                  return !isArrayItemComponent(
-                    sc,
-                    Object.values(listComponentMap)
-                  )
-                }}
-              />
-            </SchemaExpressionScopeContext.Provider>
+            <RecursionField
+              schema={items}
+              name={index}
+              filterProperties={(sc) => {
+                return !isArrayItemComponent(
+                  sc,
+                  Object.values(listComponentMap)
+                )
+              }}
+            />
           </ArrayBase.Item>
         )
       })

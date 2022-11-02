@@ -207,11 +207,7 @@ export const BaseItem: React.FC<IFormItemProps> = ({ children, ...props }) => {
 
     if ((tooltipLayout === 'text' && tooltip) || overflow) {
       return (
-        <Popover
-          placement="top"
-          align={{ offset: [0, 10] }}
-          content={getOverflowTooltip()}
-        >
+        <Popover placement="top" content={getOverflowTooltip()}>
           {labelChildren}
         </Popover>
       )
