@@ -1,6 +1,6 @@
 {
   "name": "@formily/antd-mobile",
-  "version": "1.0.0-alpha.0",
+  "version": "1.0.0-beta.0",
   "license": "MIT",
   "main": "lib",
   "types": "lib/index.d.ts",
@@ -38,21 +38,21 @@
     "access": "public"
   },
   "peerDependencies": {
+    "antd-mobile": "^5.0.0-rc.23",
+    "antd-mobile-icons": "^0.2.2",
     "react": ">=16.8.0 || >=17.0.0",
     "react-dom": ">=16.8.0",
-    "react-is": ">=16.8.0 || >=17.0.0",
-    "antd-mobile": "^5.0.0-rc.23",
-    "antd-mobile-icons": "^0.2.2"
+    "react-is": ">=16.8.0 || >=17.0.0"
   },
   "dependencies": {
-    "classnames": "^2.2.6",
-    "react-sticky-box": "^0.9.3",
-    "react-sortable-hoc": "^2.0.0",
-    "@formily/react": "^2.2.10",
-    "@formily/grid": "^2.2.10",
     "@formily/core": "^2.2.10",
+    "@formily/grid": "^2.2.10",
+    "@formily/react": "^2.2.10",
+    "classnames": "^2.2.6",
     "lodash": "^4.17.21",
-    "moment": "^2.29.1"
+    "moment": "^2.29.1",
+    "react-sortable-hoc": "^2.0.0",
+    "react-sticky-box": "^0.9.3"
   },
   "devDependencies": {
     "dumi-theme-mobile": "^1.1.16"
