@@ -53,7 +53,7 @@ export const BasePicker: React.FC<ICascadePickerProps> = ({
   useEffect(() => {
     setLabel(
       displayRender(
-        labelItems.current.map((item) => item.label),
+        labelItems.current.filter((item) => item).map((item) => item.label),
         labelItems.current
       )
     )
